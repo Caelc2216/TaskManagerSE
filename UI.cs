@@ -7,3 +7,13 @@ Save()
 Load()
 SortAlphabetical()
 */
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+
+    }
+
+    public bool IsRunning = true;
+}
