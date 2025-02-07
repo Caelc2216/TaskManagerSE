@@ -8,4 +8,3 @@ namespace TaskManager {
         public void MarkAsComplete() => IsComplete = !IsComplete;
         public override string ToString() =>  $"Task: {Name}, Description: {Description}, Timeline: {Timeline}, Id: {Id}";
     }
-}
