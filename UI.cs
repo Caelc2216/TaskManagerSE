@@ -5,6 +5,8 @@ public partial class Program
     public static void Main(string[] args)
     {
         bool IsRunning = true;
+        string listName = new();
+        List<Task> Tasks = new();
 
         while (IsRunning)
         {
@@ -70,6 +72,7 @@ public partial class Program
                 case 5: //Close Program
                     Console.Clear();
                     // Method for saving data into a .txt file
+                    Persistence.Save(listName, tasks);
                     Console.WriteLine("Closing program.");
                     IsRunning = false;
                     break;

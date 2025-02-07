@@ -1,4 +1,7 @@
-static bool Save(string fileName, List<String> lines) {
+namespace Persistence;
+public static bool Save(string fileName, List<Task> Tasks) {
+    List<string> lines = new List<string>();
+    foreach (Task task in Tasks) lines.Add(task.CSV());
     try {
         File.WriteAllLines($"{fileName}.svg", lines);
     }
@@ -9,7 +12,7 @@ static bool Save(string fileName, List<String> lines) {
     return true;
 }
 
-static List<string>? Load(string fileName) {
+public static List<string>? Load(string fileName) {
     try {
         return [..File.ReadAllLines($"{fileName}.svg")];
     }
