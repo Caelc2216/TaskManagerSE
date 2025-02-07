@@ -10,7 +10,7 @@ SortAlphabetical()
 
 using System;
 
-public class Program
+public partial class Program
 {
     public static void Main(string[] args)
     {
@@ -64,6 +64,18 @@ public class Program
                     break;
                 case 4: //Mark task as complete
                     Console.Clear();
+                    // Method for displaying task list
+                    Console.WriteLine();
+                    Console.WriteLine("Which task would you like to be marked as complete?");
+                    Console.Write("Task ID: ");
+                    int taskCompleted = int.Parse(Console.ReadLine() ?? "");
+
+                    Console.Clear();
+                    // Method for marking task as complete
+                    Console.WriteLine("Task marked as complete.");
+                    Console.WriteLine();
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ReadKey(true);
                     break;
                 case 5: //Close Program
                     Console.Clear();
