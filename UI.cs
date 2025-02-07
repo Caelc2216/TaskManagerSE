@@ -1,14 +1,4 @@
-﻿/* Class Name Task
-DisplayMenu()
-DeleteTask()
-AddTask()
-MarkTaskAsComplete()
-Save()
-Load()
-SortAlphabetical()
-*/
-
-using System;
+﻿using System;
 
 public partial class Program
 {
