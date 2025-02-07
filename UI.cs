@@ -1,14 +1,4 @@
-﻿/* Class Name Task
-DisplayMenu()
-DeleteTask()
-AddTask()
-MarkTaskAsComplete()
-Save()
-Load()
-SortAlphabetical()
-*/
-
-using System;
+﻿using System;
 
 public partial class Program
 {
@@ -16,6 +6,8 @@ public partial class Program
     {
         Persistence.Load(); //Add name of the file
         bool IsRunning = true;
+        string listName = new();
+        List<Task> Tasks = new();
 
         while (IsRunning)
         {
@@ -80,7 +72,8 @@ public partial class Program
                     break;
                 case 5: //Close Program
                     Console.Clear();
-                    Persistence.Save(); //Add name of file as well as lines
+                    // Method for saving data into a .txt file
+                    Persistence.Save(listName, tasks);
                     Console.WriteLine("Closing program.");
                     IsRunning = false;
                     break;
