@@ -1,7 +1,6 @@
-using TaskManager;
-namespace Logic
-{
-    public class Logic
+﻿namespace TaskManager.Logic;
+
+public class Logic
     {
         List<TaskManager.Task> tasks = new();
         public void DisplayList()
@@ -48,4 +47,3 @@ namespace Logic
             tasks.Sort();
         }
     }
-}
