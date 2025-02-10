@@ -16,8 +16,12 @@ namespace TaskManager.Logic
                     string description = parts[1];
                     DateTime timeline = DateTime.Parse(parts[2]);
                     int id = int.Parse(parts[3]);
-                    bool isComplete = bool.Parse(parts[4]);
-                    tasks.Add(new Task(name, description, timeline, id,isComplete));
+                    bool isComplete = false;
+                    try {
+                        isComplete = bool.Parse(parts[4]);
+                    }
+                    catch {}
+                    tasks.Add(new Task(name, description, timeline, id, isComplete));
                 }
             }
             return tasks;
