@@ -5,7 +5,7 @@ public static class Persistence
 {
     public static bool Save(string fileName, List<Task> Tasks)
     {
-        List<string> lines = new List<string>();
+        List<string> lines = [];
         foreach (Task task in Tasks) lines.Add(task.CSV());
         try
         {
@@ -28,7 +28,7 @@ public static class Persistence
         catch
         {
             File.WriteAllLines($"{fileName}.txt", new List<string>());
-            return new();
+            return [];
         }
     }
 }

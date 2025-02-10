@@ -2,7 +2,7 @@
 
 public class Logic
     {
-        public List<Task> tasks = new();
+        public List<Task> tasks = [];
         public void DisplayList()
         {
             Console.WriteLine($"{"ID",10}{"Task",15}{"Completed", 10}");

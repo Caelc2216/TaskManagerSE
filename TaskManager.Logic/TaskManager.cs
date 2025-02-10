@@ -3,10 +3,10 @@ namespace TaskManager.Logic
     public class ParseCSV(List<string> csvFile)
     {
         private readonly List<string> csvFile = csvFile;
-        public List<Task> Tasks { get; set; } = new();
+        public List<Task> Tasks { get; set; } = [];
         public List<Task> Parse()
         {
-            List<Task> tasks = new List<Task>();
+            List<Task> tasks = [];
             foreach (string line in csvFile)
             {
                 string[] parts = line.Split(',');
