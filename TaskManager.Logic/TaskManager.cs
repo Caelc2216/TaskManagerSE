@@ -1,13 +1,13 @@
 namespace TaskManager.Logic
 {
-    public class ParseSVG(List<string> svgFile)
+    public class ParseCSV(List<string> csvFile)
     {
-        private List<string> svgFile = svgFile;
+        private readonly List<string> csvFile = csvFile;
         public List<Task> Tasks { get; set; } = new();
         public List<Task> Parse()
         {
             List<Task> tasks = new List<Task>();
-            foreach (string line in svgFile)
+            foreach (string line in csvFile)
             {
                 string[] parts = line.Split(',');
                 if (parts.Length == 4)
@@ -16,11 +16,13 @@ namespace TaskManager.Logic
                     string description = parts[1];
                     DateTime timeline = DateTime.Parse(parts[2]);
                     int id = int.Parse(parts[3]);
-                    bool isComplete = false;
+                    bool isComplete;
                     try {
                         isComplete = bool.Parse(parts[4]);
                     }
-                    catch {}
+                    catch {
+                        isComplete = false;
+                    }
                     tasks.Add(new Task(name, description, timeline, id, isComplete));
                 }
             }

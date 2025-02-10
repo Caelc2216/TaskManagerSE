@@ -1,16 +1,5 @@
-﻿/* Class Name Task
-DisplayMenu()
-DeleteTask()
-AddTask()
-MarkTaskAsComplete()
-Save()
-Load()
-SortAlphabetical()
-*/
-
-using TaskManager.Logic;
+﻿using TaskManager.Logic;
 using TaskManager.Persistence;
-
 public partial class Program
 {
     public static void Main(string[] args)
@@ -20,7 +9,7 @@ public partial class Program
         string listName = Console.ReadLine() ?? "";
         bool IsRunning = true;
         List<string> Lines = Persistence.Load(listName)!;
-        TaskManager.Logic.ParseSVG ParseClass = new(Lines);
+        TaskManager.Logic.ParseCSV ParseClass = new(Lines);
         List<TaskManager.Logic.Task> todoTasks = ParseClass.Parse();
         Logic UILogic = new Logic();
         UILogic.tasks = todoTasks;
