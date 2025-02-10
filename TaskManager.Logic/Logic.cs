@@ -5,10 +5,12 @@ public class Logic
         List<Task> tasks = new();
         public void DisplayList()
         {
-            Console.WriteLine($"{"ID",10}{"Task",15}");
-            foreach (Task t in tasks)
+            Console.WriteLine($"{"ID",10}{"Task",15}{"Completed", 10}");
+            foreach (TaskManager.Task t in tasks)
+
             {
-                Console.WriteLine($"{t.Id,10}{t.Name,15}");
+                string IsComplete = t.IsComplete? "[x]" : "[ ]";
+                Console.WriteLine($"{t.Id,10}{t.Name,15}{IsComplete,10}");
             }
         }
 
