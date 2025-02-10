@@ -1,33 +1,33 @@
-﻿namespace TaskManager.Persistence;
-
-public static class Persistence
-{
-    public static bool Save(string fileName, List<Task> Tasks)
+﻿namespace TaskManager.Persistence {
+    public static class Persistence
     {
-        List<string> lines = new List<string>();
-        foreach (Task task in Tasks) lines.Add(task.CSV());
-        try
+        public static bool Save(string fileName, List<Task> Tasks)
         {
-            File.WriteAllLines($"{fileName}.svg", lines);
+            List<string> lines = new List<string>();
+            foreach (Task task in Tasks) lines.Add(task.CSV());
+            try
+            {
+                File.WriteAllLines($"{fileName}.svg", lines);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            return true;
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            return false;
-        }
-        return true;
-    }
 
-    public static List<string>? Load(string fileName)
-    {
-        try
+        public static List<string>? Load(string fileName)
         {
-            return [.. File.ReadAllLines($"{fileName}.svg")];
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            return null;
+            try
+            {
+                return [.. File.ReadAllLines($"{fileName}.svg")];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
     }
 }
