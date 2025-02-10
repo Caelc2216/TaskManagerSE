@@ -9,16 +9,18 @@ SortAlphabetical()
 */
 
 using System;
-using TaskManager.Persistence;
+// using TaskManager.Persistence;
+using TaskManager.Logic;
 
 public partial class Program
 {
     public static void Main(string[] args)
     {
-        Persistence.Load(); //Add name of the file
+        // Persistence.Load(); //Add name of the file
         bool IsRunning = true;
         string listName;
-        List<Task> Tasks = new();
+        List<TaskManager.Task> todoTasks = new();
+        Logic UILogic = new Logic();
 
         while (IsRunning)
         {
@@ -39,54 +41,59 @@ public partial class Program
                     string taskDescription = Console.ReadLine() ?? "";
 
                     Console.Clear();
-                    //Method for adding a new task
+                    UILogic.AddTask(todoTasks, taskName, taskDescription);
                     Console.WriteLine("Task added to task list.");
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey(true);
+                    Console.Clear();
                     break;
                 case 2: //Remove task
                     Console.Clear();
-                    //Method for displaying task list
+                    UILogic.DisplayList(todoTasks);
                     Console.WriteLine("What task would you like to remove?");
                     Console.Write("Task ID: ");
                     int taskRemove = int.Parse(Console.ReadLine() ?? "");
 
                     Console.Clear();
-                    //Method for removing a task
+                    UILogic.DeleteTask(todoTasks, taskRemove);
                     Console.WriteLine("Task removed from task list.");
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey(true);
+                    Console.Clear();
                     break;
                 case 3: //Display task list
                     Console.Clear();
-                    //Method for displaying task list
+                    UILogic.DisplayList(todoTasks);
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey(true);
+                    Console.Clear();
                     break;
                 case 4: //Mark task as complete
                     Console.Clear();
-                    //Method for displaying task list
+                    UILogic.SortAlphabetical(todoTasks);
+                    UILogic.DisplayList(todoTasks);
                     Console.WriteLine();
                     Console.WriteLine("Which task would you like to be marked as complete?");
                     Console.Write("Task ID: ");
                     int taskCompleted = int.Parse(Console.ReadLine() ?? "");
 
                     Console.Clear();
-                    //Method for marking task as complete
+                    UILogic.MarkTaskAsComplete(todoTasks, taskCompleted);
                     Console.WriteLine("Task marked as complete.");
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey(true);
+                    Console.Clear();
                     break;
                 case 5: //Close Program
                     Console.Clear();
-                    // Method for saving data into a .txt file
-                    Persistence.Save(listName, tasks);
+                    // Persistence.Save(listName, tasks);
                     Console.WriteLine("Closing program.");
                     IsRunning = false;
+                    Console.Clear();
                     break;
                 default:
                     Console.Clear();
