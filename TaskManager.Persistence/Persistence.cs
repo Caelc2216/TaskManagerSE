@@ -9,7 +9,7 @@ public static class Persistence
         foreach (Task task in Tasks) lines.Add(task.CSV());
         try
         {
-            File.WriteAllLines($"{fileName}.svg", lines);
+            File.WriteAllLines($"{fileName}.txt", lines);
         }
         catch (Exception e)
         {
@@ -23,12 +23,12 @@ public static class Persistence
     {
         try
         {
-            return [.. File.ReadAllLines($"{fileName}.svg")];
+            return [.. File.ReadAllLines($"{fileName}.txt")];
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
-            return null;
+            File.WriteAllLines($"{fileName}.txt", new List<string>());
+            return new();
         }
     }
 }
