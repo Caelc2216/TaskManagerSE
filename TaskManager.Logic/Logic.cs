@@ -2,11 +2,11 @@
 
 public class Logic
     {
-        List<Task> tasks = new();
+        public List<Task> tasks = new();
         public void DisplayList()
         {
             Console.WriteLine($"{"ID",10}{"Task",15}{"Completed", 10}");
-            foreach (TaskManager.Task t in tasks)
+            foreach (Task t in tasks)
 
             {
                 string IsComplete = t.IsComplete? "[x]" : "[ ]";
