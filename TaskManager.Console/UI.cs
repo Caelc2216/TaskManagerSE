@@ -8,18 +8,19 @@ Load()
 SortAlphabetical()
 */
 
-using System;
-// using TaskManager.Persistence;
 using TaskManager.Logic;
+using TaskManager.Persistence;
 
 public partial class Program
 {
     public static void Main(string[] args)
     {
-        // Persistence.Load(); //Add name of the file
+        Console.Write("What is the name of your task list? ");
+        string listName = Console.ReadLine() ?? "";
         bool IsRunning = true;
-        string listName;
-        List<TaskManager.Task> todoTasks = new();
+        List<string> Lines = Persistence.Load(listName)!;
+        TaskManager.Logic.ParseSVG ParseClass = new(Lines);
+        List<TaskManager.Logic.Task> todoTasks = ParseClass.Parse();
         Logic UILogic = new Logic();
 
         while (IsRunning)
@@ -90,7 +91,8 @@ public partial class Program
                     break;
                 case 5: //Close Program
                     Console.Clear();
-                    // Persistence.Save(listName, tasks);
+                    // Method for saving data into a .txt file
+                    Persistence.Save(listName, todoTasks);
                     Console.WriteLine("Closing program.");
                     IsRunning = false;
                     Console.Clear();

@@ -1,10 +1,9 @@
-namespace TaskManager
+namespace TaskManager.Logic
 {
     public class ParseSVG(List<string> svgFile)
     {
-        private List<string> svgFile;
-        public List<Task> Tasks { get; set; } = new List<Task>();
-
+        private List<string> svgFile = svgFile;
+        public List<Task> Tasks { get; set; } = new();
         public List<Task> Parse()
         {
             List<Task> tasks = new List<Task>();
