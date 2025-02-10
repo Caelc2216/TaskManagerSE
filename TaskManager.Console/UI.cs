@@ -15,6 +15,7 @@ public partial class Program
 {
     public static void Main(string[] args)
     {
+        Console.Clear();
         Console.Write("What is the name of your task list? ");
         string listName = Console.ReadLine() ?? "";
         bool IsRunning = true;
