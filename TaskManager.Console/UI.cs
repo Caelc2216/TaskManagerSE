@@ -20,6 +20,7 @@ public partial class Program
 
         while (IsRunning)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Welcome to the task manager!\nWhat would you like to do?");
             Console.WriteLine();
             Console.Write("1. Add new task\n2. Remove task\n3. Display task list\n4. Mark task as complete\n5. Close Program\n");
@@ -85,6 +86,7 @@ public partial class Program
                     Console.Clear();
                     break;
                 case 5: //Close Program
+                    Console.ForegroundColor = default;
                     Console.Clear();
                     // Method for saving data into a .txt file
                     Persistence.Save(listName, UILogic.tasks);
