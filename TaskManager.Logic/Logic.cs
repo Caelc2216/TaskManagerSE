@@ -17,18 +17,22 @@ public class Logic
     public void DeleteTask(int id)
     {
         bool taskFound = false;
-        foreach (Task task in tasks)
+        for (int i = 0; i < tasks.Count; i++)
         {
-            if (task.Id == id)
+            if (tasks[i].Id == id)
             {
                 taskFound = true;
-                tasks.Remove(task);
+                tasks.Remove(tasks[i]);
             }
         }
 
         if (taskFound == false)
         {
             throw new Exception("Task not found");
+        }
+        else
+        {
+            Console.WriteLine("Task removed from task list.");
         }
     }
     public void AddTask(string name, string description)
@@ -41,17 +45,23 @@ public class Logic
     public void MarkTaskAsComplete(int id)
     {
         bool taskFound = false;
-        foreach (Task task in tasks)
+        for (int i = 0; i < tasks.Count; i++)
         {
-            if (task.Id == id)
+            if (tasks[i].Id == id)
             {
-                task.IsComplete = true;
+                taskFound = true;
+                tasks[i].MarkAsComplete();
+                break;
             }
         }
 
         if (taskFound == false)
         {
             throw new Exception("Task not found");
+        }
+        else
+        {
+            Console.WriteLine("Task marked as complete.");
         }
 
         

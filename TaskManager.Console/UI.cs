@@ -57,11 +57,20 @@ public partial class Program
                     while (!int.TryParse(Console.ReadLine() ?? "", out result))
                     {
                         Console.WriteLine("Invalid Input.");
+                        Console.Write("Task ID: ");
                     }
 
                     Console.Clear();
-                    UILogic.DeleteTask(result);
-                    Console.WriteLine("Task removed from task list.");
+
+                    try
+                    {
+                        UILogic.DeleteTask(result);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Task not found.");
+                    }
+
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey(true);
@@ -82,11 +91,24 @@ public partial class Program
                     Console.WriteLine();
                     Console.WriteLine("Which task would you like to be marked as complete?");
                     Console.Write("Task ID: ");
-                    int taskCompleted = int.Parse(Console.ReadLine() ?? "");
+                    int result2;
+                    while (!int.TryParse(Console.ReadLine() ?? "", out result2))
+                    {
+                        Console.WriteLine("Invalid Input.");
+                        Console.Write("Task ID: ");
+                    }
 
                     Console.Clear();
-                    UILogic.MarkTaskAsComplete(taskCompleted);
-                    Console.WriteLine("Task marked as complete.");
+
+                    try
+                    {
+                        UILogic.MarkTaskAsComplete(result2);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Task not found.");
+                    }
+
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey(true);
