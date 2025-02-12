@@ -1,14 +1,17 @@
-﻿using TaskManager.Logic;
+﻿using System.Runtime.Serialization.Json;
+using TaskManager.Logic;
 using TaskManager.Persistence;
 public partial class Program
 {
     public static void Main(string[] args)
     {
+        reinitialize:
         string listName;
         if (args.Length == 0) {
             Console.Clear();
             Console.Write("What is the name of your task list? ");
             listName = Console.ReadLine() ?? "";
+            if (listName == "") goto reinitialize;
         } else {
             listName = args[0];
         }
