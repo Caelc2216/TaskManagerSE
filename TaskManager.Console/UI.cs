@@ -53,10 +53,14 @@ public partial class Program
                     UILogic.DisplayList();
                     Console.WriteLine("What task would you like to remove?");
                     Console.Write("Task ID: ");
-                    int taskRemove = int.Parse(Console.ReadLine() ?? "");
+                    int result;
+                    while (!int.TryParse(Console.ReadLine() ?? "", out result))
+                    {
+                        Console.WriteLine("Invalid Input.");
+                    }
 
                     Console.Clear();
-                    UILogic.DeleteTask(taskRemove);
+                    UILogic.DeleteTask(result);
                     Console.WriteLine("Task removed from task list.");
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue.");
@@ -94,6 +98,7 @@ public partial class Program
                     // Method for saving data into a .txt file
                     Persistence.Save(listName, UILogic.tasks);
                     Console.WriteLine("Closing program.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     IsRunning = false;
                     Console.Clear();
                     break;
