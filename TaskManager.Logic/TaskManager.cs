@@ -17,6 +17,7 @@ namespace TaskManager.Logic
                     DateTime timeline = DateTime.Parse(parts[2]);
                     int id = int.Parse(parts[3]);
                     bool isComplete;
+                    
                     try {
                         isComplete = bool.Parse(parts[4]);
                     }
@@ -24,6 +25,9 @@ namespace TaskManager.Logic
                         isComplete = false;
                     }
                     tasks.Add(new Task(name, description, timeline, id, isComplete));
+                }
+                else {
+                    throw new ArgumentException("Invalid number of arguments!");
                 }
             }
             return tasks;
@@ -36,8 +40,7 @@ namespace TaskManager.Logic
         public DateTime Timeline { get; set; } = Timeline;
         public int Id { get; set; } = Id;
         public bool IsComplete { get; set; } = IsComplete;
-        public string CSV() => $"{Name},{Description},{Timeline},{Id},{IsComplete}";
         public void MarkAsComplete() => IsComplete = !IsComplete;
-        public override string ToString() => $"Task: {Name}, Description: {Description}, Timeline: {Timeline}, Id: {Id}";
+        public override string ToString() => $"{Name},{Description},{Timeline},{Id},{IsComplete}";
     }
 }

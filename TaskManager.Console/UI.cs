@@ -1,13 +1,12 @@
-﻿using System.Runtime.Serialization.Json;
-using TaskManager.Logic;
+﻿using TaskManager.Logic;
 using TaskManager.Persistence;
 public partial class Program
 {
     public static void Main(string[] args)
     {
-        reinitialize:
-        string listName;
-        if (args.Length == 0) {
+        reinitialize: string listName;
+        
+        if (args.Length != 1) {
             Console.Clear();
             Console.Write("What is the name of your task list? ");
             listName = Console.ReadLine() ?? "";
@@ -15,10 +14,11 @@ public partial class Program
         } else {
             listName = args[0];
         }
+
         bool IsRunning = true;
         List<string> Lines = Persistence.Load(listName)!;
         ParseCSV ParseClass = new(Lines);
-        List<TaskManager.Logic.Task> todoTasks = ParseClass.Parse();
+        List<Task> todoTasks = ParseClass.Parse();
         Logic UILogic = new() { tasks = todoTasks };
 
         while (IsRunning)

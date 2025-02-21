@@ -7,15 +7,15 @@ public static class Persistence
     {
         List<string> lines = [];
         foreach (Task task in Tasks) lines.Add(task.CSV());
-        try
-        {
+
+        try {
             File.WriteAllLines($"{fileName}.txt", lines);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             Console.WriteLine(e.Message);
             return false;
         }
+
         return true;
     }
 
