@@ -7,11 +7,11 @@ public class Logic
     public List<Task> tasks = [];
     public void DisplayList()
     {
-        Console.WriteLine($"{"ID",10}{"Task",15}{"Completed",10}");
+        Console.WriteLine($"{"ID",10}{"Task",-15}{"Completed",10}");
         foreach (Task t in tasks)
         {
             string IsComplete = t.IsComplete ? "[x]" : "[ ]";
-            Console.WriteLine($"{t.Id,10}{t.Name,15}{IsComplete,10}");
+            Console.WriteLine($"{t.Id,10}{t.Name,-15}{IsComplete,10}");
         }
     }
     public void DeleteTask(int id)
@@ -37,9 +37,8 @@ public class Logic
     }
     public void AddTask(string name, string description)
     {
-        DateTime time = DateTime.Now;
         int id = DateTime.Now.Millisecond;
-        Task newTask = new(name, description, time, id);
+        Task newTask = new(name, description, DateTime.Now, id);
         tasks.Add(newTask);
     }
     public void MarkTaskAsComplete(int id)
@@ -68,6 +67,6 @@ public class Logic
     }
     public void SortAlphabetical()
     {
-        tasks.Sort();
+        tasks = tasks.OrderBy(t => t.Name).ToList();
     }
 }
